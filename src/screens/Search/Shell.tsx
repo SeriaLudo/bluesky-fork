@@ -49,6 +49,12 @@ import {SearchLanguageDropdown} from './components/SearchLanguageDropdown'
 import {Explore} from './Explore'
 import {SearchResults} from './SearchResults'
 
+/**
+ * Main search screen shell component that handles the search interface and state management.
+ * This component manages the search input, autocomplete, history, and results display.
+ * It's responsible for coordinating between different search-related components and handling
+ * navigation state.
+ */
 export function SearchScreenShell({
   queryParam,
   testID,
@@ -412,6 +418,11 @@ export function SearchScreenShell({
   )
 }
 
+/**
+ * Inner component of the search screen that handles the display of search results
+ * or explore content based on the current search state.
+ * This component is memoized to prevent unnecessary re-renders.
+ */
 let SearchScreenInner = ({
   query,
   queryWithParams,
@@ -482,6 +493,15 @@ let SearchScreenInner = ({
 }
 SearchScreenInner = memo(SearchScreenInner)
 
+/**
+ * Custom hook that manages the search query parameters and their state.
+ * It handles parsing the initial query, managing language filters, and
+ * constructing the final search query with all parameters.
+ *
+ * @param initialQuery - The initial search query string
+ * @param fixedParams - Optional fixed parameters that cannot be changed
+ * @returns Object containing the parsed query, query with parameters, and parameter handlers
+ */
 function useQueryManager({
   initialQuery,
   fixedParams,
@@ -530,6 +550,11 @@ function useQueryManager({
   }, [query, params, handlers])
 }
 
+/**
+ * Utility function to scroll the window to the top on web platforms.
+ * This is used to ensure the search interface is properly positioned
+ * when performing search actions.
+ */
 function scrollToTopWeb() {
   if (isWeb) {
     window.scrollTo(0, 0)

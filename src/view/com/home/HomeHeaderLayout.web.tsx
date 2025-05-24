@@ -1,7 +1,7 @@
-import React from 'react'
 import {View} from 'react-native'
 import {msg} from '@lingui/macro'
 import {useLingui} from '@lingui/react'
+import type React from 'react'
 
 import {useKawaiiMode} from '#/state/preferences/kawaii'
 import {useSession} from '#/state/session'
@@ -13,6 +13,7 @@ import {ButtonIcon} from '#/components/Button'
 import {Hashtag_Stroke2_Corner0_Rounded as FeedsIcon} from '#/components/icons/Hashtag'
 import * as Layout from '#/components/Layout'
 import {Link} from '#/components/Link'
+import {Text} from '#/components/Typography'
 
 export function HomeHeaderLayout(props: {
   children: React.ReactNode
@@ -49,6 +50,7 @@ function HomeHeaderLayoutDesktopAndTablet({
             <View style={{width: 34}} />
             <View style={[a.flex_1, a.align_center, a.justify_center]}>
               <Logo width={kawaii ? 60 : 28} />
+              <Text style={{color: 'red'}}>JoelSky</Text>
             </View>
             <Link
               to="/feeds"
